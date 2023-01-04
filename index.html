@@ -1,29 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>5 Day Weather Forecast</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS LINK -->
+    <link rel="stylesheet" href="assets/style.css" />
 
-<!-- FIRST: Link the following -->
-<!-- jquery -->
-<!-- JS -->
-<!-- CSS -->
-<!-- API -->
-<!-- bootstrap -->
+    <title>5 Day Weather Forecast</title>
+  </head>
 
-  <!-- need a header -->
+  <body class="min-100-vh bg-light">
+    <!-- HEADER -->
+    <header class="title text-center text-white bg-dark">
+      <h1>5 Day Weather Forecast</h1>
+    </header>
 
-  <!-- on the left need a search bar + form box. use Bootstrap for this? -->
 
-  <!-- local storage will populate the past searches below this form -->
+<!-- on the left need a search bar + form box. use Bootstrap for this? need to style CSS or bootstrap so that this is on the left -->
 
-  <!-- to the right will show the weather API that is current -->
+    <!-- SEARCH BOX -->
+    <div id="search-box">
+      <h2>Search for a city:</h2>
+      <form id="city-search">
+        <input type="text" class="form-input" placeholder="Enter city here" />
+        <button class="btn bg-medium text-white">Search</button>
+      </form>
+      <ul id="past-search"></ul>
+    </div>
+    <!-- FIRST: Link the following -->
+    <!-- jquery -->
+    <!-- API -->
+    <!-- bootstrap -->
 
-  <!-- below this will be the 5 day forecast -->
   
-</body>
+    <!-- local storage will populate the past searches below this form -->
+
+    <!-- to the right will show the weather API that is current - how do we link this-->
+
+    <!-- below this will be the 5 day forecast -->
+<!-- JQUERY LINK -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <!-- JAVASCRIPT LINK -->
+    <script src="assets/style.js"></script>
+  </body>
 </html>
