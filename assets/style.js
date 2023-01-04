@@ -16,17 +16,18 @@ searchBtn.addEventListener("click", function () {
 $(document).ready(function () {
 $(".btn").click(function() {
 
-var searchBoxEl = $(this).closest("#search-box").attr("id");
+var searchBoxEl = $(this).parent.attr("id");
 
-var cityEl = $(this).closest("#search-box").find("Input").val();
+var cityEl = $(this).prev("input").val();
 
 localStorage.setItem(searchBoxEl, cityEl);
 
 });
 })
 
+// line 29 is not proper syntax. we don't want the info to stay in the box,
 $(document).ready(function () {
-$("#search-box")(function (){
+$("#search-box").each(function (){
 
 var searchBoxEl =$(this).attr("id");
 
