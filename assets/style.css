@@ -78,6 +78,18 @@ h2 {
   padding: 1rem;
 }
 
+form .form-input {
+  width: 25%;
+  padding: 0.75rem;
+  color: #53565a;
+  background-color: #ffffff;
+  margin: 0.625rem 0;
+  font-size: 1.2rem;
+  border: 1px solid #484848;
+  border-radius: 5px;
+  font-size: smaller;
+}
+
 .btn {
   cursor: pointer;
   text-align: center;
@@ -97,21 +109,7 @@ h2 {
   background-color: #05719D;
 }
 
-form .form-input {
-  width: 25%;
-  padding: 0.75rem;
-  color: #53565a;
-  background-color: #ffffff;
-  margin: 0.625rem 0;
-  font-size: 1.2rem;
-  border: 1px solid #484848;
-  border-radius: 5px;
-  font-size: smaller;
-}
 
-.flex-row {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
+
+
 
