@@ -36,23 +36,22 @@ fetch(apiUrl)
   .then((data) => console.log(data));
 
 // initiates the search button to save the city name searched into local storage
-function saveCity() {
-  document.querySelector(".form-input").innerHtml = formInputEl;
+document.querySelector(".form-input").innerHtml = formInputEl;
 
-  searchBtnEl.addEventListener("click", function saveCitySearch(event) {
-    event.preventDefault();
-    formInputEl = formInputEl.value;
-    console.log(formInputEl);
+searchBtnEl.addEventListener("click", function saveCitySearch(event) {
+  event.preventDefault();
+  formInputEl = formInputEl.value;
+  console.log(formInputEl);
 
-    localStorage.setItem("formInputEl", formInputEl);
+  // saves to local storage
+  localStorage.setItem("formInputEl", formInputEl);
 
-    saveCitySearch();
-  });
-}
-saveCity();
+  saveCitySearch();
+});
+// }
 // need to make this be able to just continuously add to local storage. when i type in a 2nd city it gives me a value of undefined.
 
-
+// also need to make the text box clear, and then have the city appear below as a clickable thing
 
 // Maps the API's icons to the ones from https://erikflowers.github.io/weather-icons/
 var weatherIconsMap = {
