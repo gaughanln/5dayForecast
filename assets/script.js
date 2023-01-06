@@ -15,7 +15,7 @@ var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=dallas&appid=a41
 
 var searchBoxEl = document.getElementById("search-box");
 var citySearchEl = document.getElementsByClassName("city-search");
-var formInputEl = document.getElementsByClassName("form-input");
+var formInputEl = document.querySelector(".form-input");
 var searchBtnEl = document.querySelector(".btn");
 var pastSearchEl = document.getElementById("past-search")
 var containerEl = document.querySelector(".container");
@@ -38,7 +38,7 @@ fetch(apiUrl)
   // initiates the search button to save the city name searched
 
   function saveCity(){
-document.getElementsByClassName("form-input").innerHtml = formInputEl;
+document.querySelector(".form-input").innerHtml = formInputEl;
 
 searchBtnEl.addEventListener("click", function saveCitySearch(event){
   event.preventDefault();
