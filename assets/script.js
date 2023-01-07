@@ -4,9 +4,9 @@
 // const key = "a411ef0030322e0862cd44cde300dd84";
 // this is hard coded for dallas at the moment
 var apiUrl =
-  "https://api.openweathermap.org/data/2.5/weather?q=dallas&appid=a411ef0030322e0862cd44cde300dd84";
+  "https://api.openweathermap.org/data/2.5/forecast?q=dallas&appid=a411ef0030322e0862cd44cde300dd84";
 
-// var apiUrlByCity = "http://api.openweathermap.org/geo/1.0/direct?q=" + form-input + "&appid=a411ef0030322e0862cd44cde300dd84"
+// var apiUrlForecast = "http://api.openweathermap.org/geo/1.0/direct?q=" + form-input + "&appid=a411ef0030322e0862cd44cde300dd84"
 
 // fields to call temp, temp_min, temp_max, humidity, wind: speed, "weather": [ // {
 //   "id": 500,
@@ -14,12 +14,19 @@ var apiUrl =
 //   "description": "light rain",
 //   "icon": "10d"
 
+// GLOBAL VARIABLES
 var searchBoxEl = document.getElementById("search-box");
 var citySearchEl = document.getElementsByClassName("city-search");
 var formInputEl = document.querySelector(".form-input");
 var searchBtnEl = document.querySelector(".btn");
 var pastSearchEl = document.getElementById("past-search");
 var containerEl = document.querySelector(".container");
+
+
+// fetched API - needs work
+fetch(apiUrl)
+  .then((response) => response.json())
+  .then((data) => console.log(data));
 
 // hides the weather box until the search button is clicked
 containerEl.style.display = "none";
@@ -28,27 +35,46 @@ containerEl.style.display = "none";
 searchBtnEl.addEventListener("click", function (event) {
   event.preventDefault();
   containerEl.style.display = "block";
+
+  if (formInputEl.value.trim() || formInputEl.value.trim() !== '') {
+    let city = formInputEl.value.trim();
+    // do the actual search
+    saveCitySearch(city);
+    formInputEl.value = '';
+    // render history buttons
+    renderHistory();
+  }
 });
 
-// fetched API
-fetch(apiUrl)
-  .then((response) => response.json())
-  .then((data) => console.log(data));
+// setting up city searches as arrays to save in local storage
+function saveCitySearch(city) {
+  let previousHistory = JSON.parse(localStorage.getItem('searchHistory')) || {};
+  previousHistory[city] = true;
+  localStorage.setItem("searchHistory", JSON.stringify(previousHistory));
+}
 
-// initiates the search button to save the city name searched into local storage
-document.querySelector(".form-input").innerHtml = formInputEl;
+// showing the search history on the page
+function renderHistory() {
+  let previousHistory = JSON.parse(localStorage.getItem('searchHistory')) || {};
+  pastSearchEl.innerHTML = '';
+  for(const cityName in previousHistory){
+    let button = document.createElement('button');
+    button.innerText = cityName;
+// making the search history clickable
+    button.addEventListener('click', function (event) {
+      let cityName = event.target.innerText;
+      console.log(cityName);
+      // serachCity(cityName);
+    });
+// HOW DO I STYLE THIS
+    pastSearchEl.append(button);
+  }
+}
 
-searchBtnEl.addEventListener("click", function saveCitySearch(event) {
-  event.preventDefault();
-  formInputEl = formInputEl.value;
-  console.log(formInputEl);
 
-  // saves to local storage
-  localStorage.setItem("formInputEl", formInputEl);
 
-  saveCitySearch();
-});
-// }
+
+
 // need to make this be able to just continuously add to local storage. when i type in a 2nd city it gives me a value of undefined.
 
 // also need to make the text box clear, and then have the city appear below as a clickable thing

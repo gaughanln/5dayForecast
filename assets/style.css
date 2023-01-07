@@ -109,6 +109,22 @@ form .form-input {
   background-color: #05719D;
 }
 
+/* HOW DO I STYLE THIS */
+.past-search {
+  cursor: pointer;
+  text-align: center;
+  display: inline-block;
+  padding: 0.5rem 1.2rem;
+  margin: 0;
+  text-decoration: none;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  outline: none;
+  /* background-color: #aeaeae; */
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
 /* DASHBOARD STYLING */
 a {
   color: white;
