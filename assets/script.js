@@ -3,10 +3,15 @@
 // GLOBAL VARIABLES
 // const key = "a411ef0030322e0862cd44cde300dd84";
 // this is hard coded for dallas at the moment
-var apiUrl =
-  "https://api.openweathermap.org/data/2.5/forecast?q=dallas&appid=a411ef0030322e0862cd44cde300dd84";
+// var apiUrl =
+//   "https://api.openweathermap.org/data/2.5/forecast?q=dallas&appid=a411ef0030322e0862cd44cde300dd84";
 
-// var apiUrlForecast = "http://api.openweathermap.org/geo/1.0/direct?q=" + form-input + "&appid=a411ef0030322e0862cd44cde300dd84"
+// // fetched API - needs work
+// fetch(apiUrlForecast)
+//   .then((response) => response.json())
+//   .then((data) => console.log(data));
+
+// var apiUrlForecast = "http://api.openweathermap.org/geo/1.0/direct?q=" + form-input.value + "&appid=a411ef0030322e0862cd44cde300dd84"
 
 // fields to call temp, temp_min, temp_max, humidity, wind: speed, "weather": [ // {
 //   "id": 500,
@@ -21,12 +26,10 @@ var formInputEl = document.querySelector(".form-input");
 var searchBtnEl = document.querySelector(".btn");
 var pastSearchEl = document.getElementById("past-search");
 var containerEl = document.querySelector(".container");
+var cityNameEl = document.querySelector("#cityName")
 
-
-// fetched API - needs work
-fetch(apiUrl)
-  .then((response) => response.json())
-  .then((data) => console.log(data));
+var localDateEl = $("#localDate")
+var localTimeEl = $("#localTime")
 
 // hides the weather box until the search button is clicked
 containerEl.style.display = "none";
@@ -44,7 +47,36 @@ searchBtnEl.addEventListener("click", function (event) {
     // render history buttons
     renderHistory();
   }
+
+  fetch("https://api.openweathermap.org/data/2.5/forecast?q="+ form-input.value +"&appid=a411ef0030322e0862cd44cde300dd84")
+
+  // fetched API - needs work
+  // fetch(apiUrlForecast)
+    .then((response) => response.json())
+    .then((data) => console.log(data));
+  
+    // var nameValue = data["name"];
+    // cityName.innerHTML = nameValue
 });
+
+// searchBtnEl.addEventListener("click", function(){
+//   fetch("https://api.openweathermap.org/data/2.5/forecast?q="+ form-input.value +"&appid=a411ef0030322e0862cd44cde300dd84")
+
+// // fetched API - needs work
+// // fetch(apiUrlForecast)
+//   .then((response) => response.json())
+//   .then((data) => console.log(data));
+
+//   var nameValue = data["name"];
+//   cityName.innerHTML = nameValue
+
+// })
+
+
+
+
+
+
 
 // setting up city searches as arrays to save in local storage
 function saveCitySearch(city) {
@@ -57,6 +89,7 @@ function saveCitySearch(city) {
 function renderHistory() {
   let previousHistory = JSON.parse(localStorage.getItem('searchHistory')) || {};
   pastSearchEl.innerHTML = '';
+  // creating a button for the previiously searched citiesYes, they wi
   for(const cityName in previousHistory){
     let button = document.createElement('button');
     button.innerText = cityName;
@@ -71,13 +104,23 @@ function renderHistory() {
   }
 }
 
+// display date function * need to make sure it's set to date of the city called
+function displayDate() {
+  var todaysDate = dayjs().format("dddd, MMM DD, YYYY");
+  localDateEl.text(todaysDate);
+}
+displayDate();
+
+// display time function * need to make sure it's set to local time of the city called
+function displayTime() {
+  var todaysTime = dayjs().format("h:mm A");
+  localTimeEl.text(todaysTime);
+}
+displayTime();
 
 
 
 
-// need to make this be able to just continuously add to local storage. when i type in a 2nd city it gives me a value of undefined.
-
-// also need to make the text box clear, and then have the city appear below as a clickable thing
 
 // Maps the API's icons to the ones from https://erikflowers.github.io/weather-icons/
 var weatherIconsMap = {
