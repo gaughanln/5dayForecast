@@ -26,10 +26,14 @@ var formInputEl = document.querySelector(".form-input");
 var searchBtnEl = document.querySelector(".btn");
 var pastSearchEl = document.getElementById("past-search");
 var containerEl = document.querySelector(".container");
-var cityNameEl = document.querySelector("#cityName")
+var cityNameEl = document.querySelector("#cityName");
 
-var localDateEl = $("#localDate")
-var localTimeEl = $("#localTime")
+var iconEl = document.getElementById("main-icon");
+var mainTempEl = document.getElementById("mainTemperature");
+var mainTempDescEl = document.getElementById("tempDescription");
+
+var localDateEl = $("#localDate");
+var localTimeEl = $("#localTime");
 
 // hides the weather box until the search button is clicked
 containerEl.style.display = "none";
@@ -39,51 +43,55 @@ searchBtnEl.addEventListener("click", function (event) {
   event.preventDefault();
   containerEl.style.display = "block";
 
-  if (formInputEl.value.trim() || formInputEl.value.trim() !== '') {
+  if (formInputEl.value.trim() || formInputEl.value.trim() !== "") {
     let city = formInputEl.value.trim();
     // do the actual search
     saveCitySearch(city);
-    formInputEl.value = '';
+
     // render history buttons
     renderHistory();
   }
-  // console.log(formInputEl.value)
+  console.log(formInputEl.value);
 
   // fetching the API data
-  fetch("https://api.openweathermap.org/data/2.5/weather?q="+ formInputEl.value +"&appid=a411ef0030322e0862cd44cde300dd84")
+  fetch(
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
+      formInputEl.value +
+      "&appid=a411ef0030322e0862cd44cde300dd84"
+  )
     .then((response) => response.json())
     .then((data) => console.log(data));
-  
-    // var nameValue = data["name"];
-    // cityName.innerHTML = nameValue
+  console.log(formInputEl.value);
+
+  // claring the search box
+  formInputEl.value = "";
 });
 
 // setting up city searches as arrays to save in local storage
 function saveCitySearch(city) {
-  let previousHistory = JSON.parse(localStorage.getItem('searchHistory')) || {};
+  let previousHistory = JSON.parse(localStorage.getItem("searchHistory")) || {};
   previousHistory[city] = true;
   localStorage.setItem("searchHistory", JSON.stringify(previousHistory));
 }
 
 // showing the search history on the page
 function renderHistory() {
-  let previousHistory = JSON.parse(localStorage.getItem('searchHistory')) || {};
-  pastSearchEl.innerHTML = '';
+  let previousHistory = JSON.parse(localStorage.getItem("searchHistory")) || {};
+  pastSearchEl.innerHTML = "";
   // creating a button for the previiously searched citiesYes, they wi
-  for(const cityName in previousHistory){
-    let button = document.createElement('button');
+  for (const cityName in previousHistory) {
+    let button = document.createElement("button");
     button.innerText = cityName;
-// making the search history clickable
-    button.addEventListener('click', function (event) {
+    // making the search history clickable
+    button.addEventListener("click", function (event) {
       let cityName = event.target.innerText;
       console.log(cityName);
       // serachCity(cityName);
     });
-// HOW DO I STYLE THIS
+    // HOW DO I STYLE THIS
     pastSearchEl.append(button);
   }
 }
-
 
 // can maybe do Date + time within the API
 
@@ -100,7 +108,6 @@ function displayTime() {
   localTimeEl.text(todaysTime);
 }
 displayTime();
-
 
 // WHEN I search for a city
 // THEN I am presented with current and future conditions for that city and that city is added to the search history
