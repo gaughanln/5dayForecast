@@ -47,36 +47,16 @@ searchBtnEl.addEventListener("click", function (event) {
     // render history buttons
     renderHistory();
   }
+  // console.log(formInputEl.value)
 
-  fetch("https://api.openweathermap.org/data/2.5/forecast?q="+ form-input.value +"&appid=a411ef0030322e0862cd44cde300dd84")
-
-  // fetched API - needs work
-  // fetch(apiUrlForecast)
+  // fetching the API data
+  fetch("https://api.openweathermap.org/data/2.5/weather?q="+ formInputEl.value +"&appid=a411ef0030322e0862cd44cde300dd84")
     .then((response) => response.json())
     .then((data) => console.log(data));
   
     // var nameValue = data["name"];
     // cityName.innerHTML = nameValue
 });
-
-// searchBtnEl.addEventListener("click", function(){
-//   fetch("https://api.openweathermap.org/data/2.5/forecast?q="+ form-input.value +"&appid=a411ef0030322e0862cd44cde300dd84")
-
-// // fetched API - needs work
-// // fetch(apiUrlForecast)
-//   .then((response) => response.json())
-//   .then((data) => console.log(data));
-
-//   var nameValue = data["name"];
-//   cityName.innerHTML = nameValue
-
-// })
-
-
-
-
-
-
 
 // setting up city searches as arrays to save in local storage
 function saveCitySearch(city) {
@@ -104,6 +84,9 @@ function renderHistory() {
   }
 }
 
+
+// can maybe do Date + time within the API
+
 // display date function * need to make sure it's set to date of the city called
 function displayDate() {
   var todaysDate = dayjs().format("dddd, MMM DD, YYYY");
@@ -118,31 +101,6 @@ function displayTime() {
 }
 displayTime();
 
-
-
-
-
-// Maps the API's icons to the ones from https://erikflowers.github.io/weather-icons/
-var weatherIconsMap = {
-  "01d": "wi-day-sunny",
-  "01n": "wi-night-clear",
-  "02d": "wi-day-cloudy",
-  "02n": "wi-night-cloudy",
-  "03d": "wi-cloud",
-  "03n": "wi-cloud",
-  "04d": "wi-cloudy",
-  "04n": "wi-cloudy",
-  "09d": "wi-showers",
-  "09n": "wi-showers",
-  "10d": "wi-day-hail",
-  "10n": "wi-night-hail",
-  "11d": "wi-thunderstorm",
-  "11n": "wi-thunderstorm",
-  "13d": "wi-snow",
-  "13n": "wi-snow",
-  "50d": "wi-fog",
-  "50n": "wi-fog",
-};
 
 // WHEN I search for a city
 // THEN I am presented with current and future conditions for that city and that city is added to the search history
