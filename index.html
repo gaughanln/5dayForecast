@@ -7,6 +7,10 @@
     <!-- CSS LINK -->
     <link rel="stylesheet" href="assets/style.css" />
 
+<!-- BOOTSTRAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+
+<!-- TITLE -->
     <title>5 Day Weather Forecast</title>
   </head>
 
@@ -19,7 +23,7 @@
     <!-- need to keep the search bar + results on the left and the actual weather ont he right -->
 
     <!-- SEARCH BOX -->
-    <div id="search-box" class="col-2">
+    <div id="search-box" class="col-2 text-center">
       <h2>Search for a city:</h2>
       <form class="city-search">
         <input type="text" class="form-input" placeholder="Enter city here" />
@@ -28,173 +32,143 @@
       <!-- HOW DO I STYLE THIS -->
       <div id="past-search" class="past-search"></div>
     </div>
-  <!-- WEATHER BOX -->
-    <div class="container" id="wrapper">
-      <div class="container-fluid" id="current-weather">
-        <div class="row">
+    
+  		<!-- ALL WEATHER CONTAINER -->
+    		<div class="container" id="wrapper">
 
-          <!-- CITY, DATE, TIME -->
-          <div class="col-3">
-            <h5><spam id="cityName"></spam>, <spam id="cityCode"></spam></h5>
-            <h6 id="localDate"></h6>
-            <h6 id="localTime"></h6>
-          </div>
+					<!-- MAIN WEATHER CONTAINER -->
+      		<div class="container-fluid" id="current-weather">
+        		<div class="row">
 
-          <!-- TEMP, CONDITIONS, SYMBOL -->
-          <div class="col-4" style="margin: 10px auto; padding: 0">
-            <div class="row">
-              <img class="wi" id="main-icon" style="font-size: 85px"></i>
-              <div>
-                <spam id="mainTemperature">°F</spam>
-                <p id="tempDescription"></p>
-              </div>
-              <p style="font-size: 1.5rem">
-                <!-- <a href="#" id="farenheit">°F</a> -->
-              </p>
-            </div>
-          </div>
+						<!-- CITY, DATE, TIME -->
+							<div class="col-md-4 col-sm-5">
+								<h3 id="cityName"></h3>
+								<h4 id="localDate"></h4>
+								<h4 id="localTime"></h4>
+							</div>
 
-          <!-- HUMIDITY + WIND -->
-          <div class="col-2 row" style="text-align: right">
-            <!-- <div class="side-weather-info">tried replacing spam with p but now it makes a new line? -->
-              <h6>Humidity: <spam id="humidity"></spam> %</h6>
-            </div>
-            <div class="col-12 side-weather-info">
-              <h6>Wind: <spam id="wind"></spam> mph</h6>
-            </div>
-          </div>
-        </div>
+						<!-- TEMP, CONDITIONS, SYMBOL -->
+							<div class="col-md-5 col-sm-7" style="margin: 10px auto; padding: 0">
+								<div class="row">
+									<img id="main-icon" style="font-size: 85px">
+										<p id="mainTemperature">°F</p>
+										<p id="tempDescription" style="font-size: 1.5rem" ></p>
+								</div>
+							</div>
 
-        <!-- 5 days forecast -->
-        <div class="container-fluid">
-          <div class="row" style="padding: 2px">
-            <!-- Day 1 -->
-            <div class="col-2 day-weather-box">
-              <div class="day-weather-inner-box">
-                <div class="forecast-main">
-                  <p id="forecast-day-1-name"></p>
-                  <div class="row">
-                    <h5 id="forecast-day-1-main">°</h5>
-                    <i class="wi forecast-icon" id="forecast-day-1-icon"></i>
-                  </div>
-                </div>
-                <div class="forecast-min-low">
-                  <p>
-                    <spam
-                      class="high-temperature"
-                      id="forecast-day-1-ht"
-                    ></spam>
-                  </p>
-                  <p>
-                    <spam class="low-temperature" id="forecast-day-1-lt"></spam>
-                  </p>
-                </div>
-              </div>
-            </div>
+						<!-- HUMIDITY + WIND -->
+							<div class="col-md-3 col-sm-12 row" style="text-align: right">
+								<!-- tried to change to a p tag and it put everything on separate lines -->
+								<h4>Humidity: <spam id="humidity"></spam> %</h4>
+								<h4>Wind: <spam id="wind"></spam> mph</h4>
+							</div>        
+   					</div>
+					</div>
 
-            <!-- Day 2 -->
-            <div class="col-2 day-weather-box">
-              <div class="day-weather-inner-box">
-                <div class="forecast-main">
-                  <p id="forecast-day-2-name"></p>
-                  <div class="row">
-                    <h5 id="forecast-day-2-main">°</h5>
-                    <i class="wi forecast-icon" id="forecast-day-2-icon"></i>
-                  </div>
-                </div>
-                <div class="forecast-min-low">
-                  <p>
-                    <spam
-                      class="high-temperature"
-                      id="forecast-day-2-ht"
-                    ></spam>
-                  </p>
-                  <p>
-                    <spam class="low-temperature" id="forecast-day-2-lt"></spam>
-                  </p>
-                </div>
-              </div>
-            </div>
+  			<!-- 5 DAY FORECAST CONTAINER -->
+        	<div class="container-fluid">
+          	<div class="row" style="padding: 2px">
+    			
+					
+				<!-- 5 DAY FORECAST -->
+					<div class="container-fluid">
+						<div class="row" style="padding: 2px;">
+		
+					<!-- DAY 1 -->
+						<div class="col-12 day-weather-box">
+							<div class="day-weather-inner-box">
+				 				<div class="forecast-main">
+									<p id="forecast-day-1-name"></p>
+										<div class="row">
+											<h5 id="forecast-day-1-temp"></h5>
+												<i class="forecast-icon" id="forecast-day-1-icon"></i>
+										</div>
+								</div>
+								<div>
+									<h4>Humidity: <spam id="humidity-day-1"></spam> %</h4>
+									<h4>Wind: <spam id="wind"></spam> mph</h4>
+								</div>
+							</div>
+						</div>
 
-            <!-- Day 3 -->
-            <div class="col-2 day-weather-box">
-              <div class="day-weather-inner-box">
-                <div class="forecast-main">
-                  <p id="forecast-day-3-name"></p>
-                  <div class="row">
-                    <h5 id="forecast-day-3-main">°</h5>
-                    <i class="wi forecast-icon" id="forecast-day-3-icon"></i>
-                  </div>
-                </div>
-                <div class="forecast-min-low">
-                  <p>
-                    <spam
-                      class="high-temperature"
-                      id="forecast-day-3-ht"
-                    ></spam>
-                  </p>
-                  <p>
-                    <spam class="low-temperature" id="forecast-day-3-lt"></spam>
-                  </p>
-                </div>
-              </div>
-            </div>
+					<!-- DAY 2 -->
+					<!-- <div class="col-2 day-weather-box">
+						<div class="day-weather-inner-box">
+							 <div class="forecast-main">
+								<p id="forecast-day-2-name"></p>
+									<div class="row">
+										<h5 id="forecast-day-2-temp">°</h5>
+											<i class="forecast-icon" id="forecast-day-2-icon"></i>
+									</div>
+							</div>
+							<div>
+								<h4>Humidity: <spam id="humidityFiveDay"></spam> %</h4>
+								<h4>Wind: <spam id="wind"></spam> mph</h4>
+							</div>
+						</div>
+					</div> -->
 
-            <!-- Day 4 -->
-            <div class="col-2 day-weather-box">
-              <div class="day-weather-inner-box">
-                <div class="forecast-main">
-                  <p id="forecast-day-4-name"></p>
-                  <div class="row">
-                    <h5 id="forecast-day-4-main">°</h5>
-                    <i class="wi forecast-icon" id="forecast-day-4-icon"></i>
-                  </div>
-                </div>
-                <div class="forecast-min-low">
-                  <p>
-                    <spam
-                      class="high-temperature"
-                      id="forecast-day-4-ht"
-                    ></spam>
-                  </p>
-                  <p>
-                    <spam class="low-temperature" id="forecast-day-4-lt"></spam>
-                  </p>
-                </div>
-              </div>
-            </div>
+					<!-- DAY 3 -->
+					<!-- <div class="col-2 day-weather-box">
+						<div class="day-weather-inner-box">
+							 <div class="forecast-main">
+								<p id="forecast-day-3-name"></p>
+									<div class="row">
+										<h5 id="forecast-day-3-temp">°</h5>
+											<i class="forecast-icon" id="forecast-day-3-icon"></i>
+									</div>
+							</div>
+							<div>
+								<h4>Humidity: <spam id="humidityFiveDay"></spam> %</h4>
+								<h4>Wind: <spam id="wind"></spam> mph</h4>
+							</div>
+						</div>
+					</div> -->
 
-            <!-- Day 5 -->
-            <div class="col-2 day-weather-box">
-              <div class="day-weather-inner-box">
-                <div class="forecast-main">
-                  <p id="forecast-day-5-name"></p>
-                  <div class="row">
-                    <h5 id="forecast-day-5-main">°</h5>
-                    <i class="wi forecast-icon" id="forecast-day-5-icon"></i>
-                  </div>
-                </div>
-                <div class="forecast-min-low">
-                  <p>
-                    <spam
-                      class="high-temperature"
-                      id="forecast-day-5-ht"
-                    ></spam>
-                  </p>
-                  <p>
-                    <spam class="low-temperature" id="forecast-day-5-lt"></spam>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+					<!-- DAY 4 -->
+					<!-- <div class="col-2 day-weather-box">
+						<div class="day-weather-inner-box">
+							 <div class="forecast-main">
+								<p id="forecast-day-4-name"></p>
+									<div class="row">
+										<h5 id="forecast-day-4-temp">°</h5>
+											<i class="forecast-icon" id="forecast-day-4-icon"></i>
+									</div>
+							</div>
+							<div>
+								<h4>Humidity: <spam id="humidityFiveDay"></spam> %</h4>
+								<h4>Wind: <spam id="wind"></spam> mph</h4>
+							</div>
+						</div>
+					</div> -->
+
+					<!-- DAY 5 -->
+					<!-- <div class="col-2 day-weather-box">
+						<div class="day-weather-inner-box">
+							 <div class="forecast-main">
+								<p id="forecast-day-5-name"></p>
+									<div class="row">
+										<h5 id="forecast-day-5-temp">°</h5>
+											<i class="forecast-icon" id="forecast-day-5-icon"></i>
+									</div>
+							</div>
+							<div>
+								<h4>Humidity: <spam id="humidityFiveDay"></spam> %</h4>
+								<h4>Wind: <spam id="wind"></spam> mph</h4>
+							</div>
+						</div>
+					</div> -->
+
+		</div>
+	</div>
+</div>
 
     <!-- API -->
-    <!-- bootstrap -->
-
+    <!-- TIMEZONE DAYJS - DO WE NEED THIS?-->
+	<!-- <script>
+			dayjs.extend(window.dayjs_plugin_utc)
+			dayjs.extend(window.dayjs_plugin_timezone);
+	</script> -->
 
     <!-- JQUERY LINK -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -210,3 +184,8 @@
     <script src="assets/script.js"></script>
   </body>
 </html>
+
+
+
+
+  	

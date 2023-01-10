@@ -39,7 +39,7 @@ searchBtnEl.addEventListener("click", function (event) {
   // WHEN I view current weather conditions for that city
 // THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, and the the wind speed
 
-  // fetching the API data
+  // fetching the API data for current weather
   fetch(
     "https://api.openweathermap.org/data/2.5/weather?q=" +
       formInputEl.value +
@@ -53,10 +53,20 @@ searchBtnEl.addEventListener("click", function (event) {
       document.querySelector("#cityName").textContent = data.name;
       console.log(data.name);
 
+      // TIMEZONE
+      // var time = data.timezone;
+      // var timeActual = dayjs(time).format("h:mm A");
+      // document.querySelector("#localTime").textContent = timeActual;
+      // console.log(timeActual);
+
       // TEMPERATURE
       document.querySelector("#mainTemperature").textContent = data.main.temp;
       // need math.random() somewhere in here to round the number
       console.log(data.main.temp);
+
+      // WEATHER CONDITIONS
+      document.querySelector("#tempDescription").textContent = data.weather[0].description;
+      console.log(data.weather[0].description);
 
       //  HUMIDITY
       document.querySelector("#humidity").textContent = data.main.humidity;
@@ -64,7 +74,7 @@ searchBtnEl.addEventListener("click", function (event) {
 
       // WIND
       document.querySelector("#wind").textContent = data.wind.speed;
-      console.log(data.wind.sppeed);
+      console.log(data.wind.speed);
       // need math.random() somewhere in here
 
       // ICONS
@@ -74,6 +84,25 @@ searchBtnEl.addEventListener("click", function (event) {
         "https://openweathermap.org/img/wn/" + weatherIcon + ".png";
       document.querySelector("#main-icon").setAttribute("src", weatherIconUrl);
       console.log(weatherIconUrl);
+
+      // 5 DAY FORECAST
+      // do i need a for loop here?
+      // Date, ICON, temp, WIND SPEED + HUMIDITY
+    });
+
+    //  fetching the API data for 5 day forecast
+  fetch(
+    "https://api.openweathermap.org/data/2.5/forecast?q=" +
+      formInputEl.value +
+      "&appid=a411ef0030322e0862cd44cde300dd84&units=imperial"
+  )
+    .then((response) => response.json())
+    .then((dataForecast) => {
+      console.log(dataForecast);
+
+// 5 DAY FORECAST TEMP
+      document.querySelector("#forecast-day-1-temp").textContent = data.list[0].main.temp;
+      console.log(data.list[0].main.temp);
     });
 
   // claring the search box
