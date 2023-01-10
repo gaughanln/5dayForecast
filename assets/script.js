@@ -1,23 +1,5 @@
-// GIVEN a weather dashboard with form inputs
-
-// GLOBAL VARIABLES
-// const key = "a411ef0030322e0862cd44cde300dd84";
-// this is hard coded for dallas at the moment
-// var apiUrl =
-//   "https://api.openweathermap.org/data/2.5/forecast?q=dallas&appid=a411ef0030322e0862cd44cde300dd84";
-
-// // fetched API - needs work
-// fetch(apiUrlForecast)
-//   .then((response) => response.json())
-//   .then((data) => console.log(data));
-
-// var apiUrlForecast = "http://api.openweathermap.org/geo/1.0/direct?q=" + form-input.value + "&appid=a411ef0030322e0862cd44cde300dd84"
-
-// fields to call temp, temp_min, temp_max, humidity, wind: speed, "weather": [ // {
-//   "id": 500,
-//   "main": "Rain",
-//   "description": "light rain",
-//   "icon": "10d"
+// WHEN I search for a city
+// THEN I am presented with current and future conditions for that city and that city is added to the search history
 
 // GLOBAL VARIABLES
 var searchBoxEl = document.getElementById("search-box");
@@ -53,19 +35,54 @@ searchBtnEl.addEventListener("click", function (event) {
   }
   console.log(formInputEl.value);
 
+
+  // WHEN I view current weather conditions for that city
+// THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, and the the wind speed
+
   // fetching the API data
   fetch(
     "https://api.openweathermap.org/data/2.5/weather?q=" +
       formInputEl.value +
-      "&appid=a411ef0030322e0862cd44cde300dd84"
+      "&appid=a411ef0030322e0862cd44cde300dd84&units=imperial"
   )
     .then((response) => response.json())
-    .then((data) => console.log(data));
-  console.log(formInputEl.value);
+    .then((data) => {
+      console.log(data);
+
+      // CITY NAME
+      document.querySelector("#cityName").textContent = data.name;
+      console.log(data.name);
+
+      // TEMPERATURE
+      document.querySelector("#mainTemperature").textContent = data.main.temp;
+      // need math.random() somewhere in here to round the number
+      console.log(data.main.temp);
+
+      //  HUMIDITY
+      document.querySelector("#humidity").textContent = data.main.humidity;
+      console.log(data.main.humidity);
+
+      // WIND
+      document.querySelector("#wind").textContent = data.wind.speed;
+      console.log(data.wind.sppeed);
+      // need math.random() somewhere in here
+
+      // ICONS
+      // can pull other icons from another source if you want
+      var weatherIcon = data.weather[0].icon;
+      var weatherIconUrl =
+        "https://openweathermap.org/img/wn/" + weatherIcon + ".png";
+      document.querySelector("#main-icon").setAttribute("src", weatherIconUrl);
+      console.log(weatherIconUrl);
+    });
 
   // claring the search box
   formInputEl.value = "";
 });
+
+
+// WHEN I click on a city in the search history
+// THEN I am again presented with current and future conditions for that city. needs to be like a button that will bring back the search
 
 // setting up city searches as arrays to save in local storage
 function saveCitySearch(city) {
@@ -82,7 +99,12 @@ function renderHistory() {
   for (const cityName in previousHistory) {
     let button = document.createElement("button");
     button.innerText = cityName;
-    // making the search history clickable
+
+    // making the search history clickable - This isn't working
+
+    // WHEN I click on a city in the search history
+// THEN I am again presented with current and future conditions for that city. needs to be like a button that will bring back the search
+
     button.addEventListener("click", function (event) {
       let cityName = event.target.innerText;
       console.log(cityName);
@@ -109,11 +131,9 @@ function displayTime() {
 }
 displayTime();
 
-// WHEN I search for a city
-// THEN I am presented with current and future conditions for that city and that city is added to the search history
 
-// WHEN I view current weather conditions for that city
-// THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, and the the wind speed
+
+
 
 // WHEN I view future weather conditions for that city
 // THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity

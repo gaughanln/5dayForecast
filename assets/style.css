@@ -10,26 +10,26 @@ body {
 body {
   /* margin: 0;
   padding: 0; */
-  font-family:Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   color: #53565a;
 }
 
 /* BACKGROUND COLORS */
 .bg-light {
-  background-color: #D7F9FB;
+  background-color: #d7f9fb;
 }
 
 .bg-medium {
-  background-color: #A0D5E8;
+  background-color: #a0d5e8;
 }
 
 .bg-dark {
-  background-color: #05719D;
+  background-color: #05719d;
 }
 
 .bg-pop {
-  background-color: #F76D16;
+  background-color: #f76d16;
 }
 
 /* TEXT COLORS */
@@ -38,7 +38,7 @@ body {
 }
 
 .text-dark {
-  color:#53565a
+  color: #53565a;
 }
 
 .text-center {
@@ -51,8 +51,7 @@ h1 {
 }
 
 h1,
-h2
- {
+h2 {
   margin: 0 0 0.5rem;
   line-height: 1.25;
 }
@@ -63,7 +62,16 @@ h1 {
 
 h2 {
   font-size: 1.25rem;
-  padding-top: .5rem;
+  padding-top: 0.5rem;
+}
+
+  h5 {
+    font-size: 2rem;
+  }
+
+h6 {
+  font-size: 0.75rem;
+  line-height: .1rem;
 }
 
 /* .min-100-vh {
@@ -106,7 +114,7 @@ form .form-input {
 }
 
 .btn:hover {
-  background-color: #05719D;
+  background-color: #05719d;
 }
 
 /* HOW DO I STYLE THIS */
@@ -132,12 +140,13 @@ a {
   text-decoration: none;
 }
 
-a:hover, a:active, a:focus{
+a:hover,
+a:active,
+a:focus {
   color: white;
   text-decoration: none;
   opacity: 1;
 }
-
 
 .active {
   color: white;
@@ -145,26 +154,26 @@ a:hover, a:active, a:focus{
   opacity: 1;
 }
 
-body{
-  background-color: #F4F6F7;
+body {
+  background-color: #f4f6f7;
 }
 
 #wrapper {
-  background-color: #28688C;
+  background-color: #28688c;
   box-shadow: 1px 5px 25px 3px #444;
   border-radius: 10px;
   margin: 100px auto;
   max-width: 720px;
   padding: 0px;
-  color: white;  
+  color: white;
 }
 
-#current-weather{
+#current-weather {
   padding: 15px;
 }
 
-#mainTemperature{
-  font-size: 5.5em; 
+#mainTemperature {
+  font-size: 5.5em;
   line-height: 0.7;
 }
 
@@ -174,13 +183,13 @@ body{
 }
 
 .day-weather-box {
-  border: 1px solid #28688C;
-  background-color: #2E7FA1;
+  border: 1px solid #28688c;
+  background-color: #2e7fa1;
   border-radius: 5px;
   height: 5em;
 }
 
-.day-weather-box p{
+.day-weather-box p {
   margin-bottom: 0;
 }
 
@@ -202,8 +211,3 @@ body{
   font-size: 25px;
   margin-left: 5px;
 }
-
-
-
-
-

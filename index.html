@@ -37,30 +37,30 @@
           <div class="col-3">
             <h5><spam id="cityName"></spam>, <spam id="cityCode"></spam></h5>
             <h6 id="localDate"></h6>
-            <h5 id="localTime"></h5>
+            <h6 id="localTime"></h6>
           </div>
 
           <!-- TEMP, CONDITIONS, SYMBOL -->
           <div class="col-4" style="margin: 10px auto; padding: 0">
             <div class="row">
-              <i class="wi" id="main-icon" style="font-size: 85px"></i>
+              <img class="wi" id="main-icon" style="font-size: 85px"></i>
               <div>
-                <spam id="mainTemperature"></spam>
+                <spam id="mainTemperature">°F</spam>
                 <p id="tempDescription"></p>
               </div>
               <p style="font-size: 1.5rem">
-                <a href="#" id="farenheit">°F</a>
+                <!-- <a href="#" id="farenheit">°F</a> -->
               </p>
             </div>
           </div>
 
           <!-- HUMIDITY + WIND -->
           <div class="col-2 row" style="text-align: right">
-            <div class="side-weather-info">
-              <h6>Humidity: <spam id="humidity"></spam>%</h6>
+            <!-- <div class="side-weather-info">tried replacing spam with p but now it makes a new line? -->
+              <h6>Humidity: <spam id="humidity"></spam> %</h6>
             </div>
             <div class="col-12 side-weather-info">
-              <h6>Wind: <spam id="wind"></spam> m/s</h6>
+              <h6>Wind: <spam id="wind"></spam> mph</h6>
             </div>
           </div>
         </div>
