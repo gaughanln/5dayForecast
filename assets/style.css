@@ -19,15 +19,12 @@ body {
 .bg-light {
   background-color: #d7f9fb;
 }
-
 .bg-medium {
   background-color: #a0d5e8;
 }
-
 .bg-dark {
   background-color: #05719d;
 }
-
 .bg-pop {
   background-color: #f76d16;
 }
@@ -36,35 +33,31 @@ body {
 .text-white {
   color: #ffffff;
 }
-
 .text-dark {
   color: #53565a;
 }
-
 .text-center {
   text-align: center;
 }
 
+/* HEADERS */
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
-
 h1,
 h2 {
   margin: 0 0 0.5rem;
   line-height: 1.25;
 }
-
-h2 {
+h2,
+H5 {
   font-size: 1.25rem;
   padding-top: 0.5rem;
 }
-
-  h3 {
-    font-size: 2rem;
-  }
-
+h3 {
+  font-size: 2rem;
+}
 h4 {
   font-size: 0.75rem;
   line-height: .1rem;
@@ -180,7 +173,7 @@ body {
   border: 1px solid #28688c;
   background-color: #2e7fa1;
   border-radius: 5px;
-  height: 10em;
+  height: 15em;
   display: inline-flex;
   margin: 14px auto;
   padding: 0px 5px;
@@ -196,13 +189,10 @@ body {
 
 .forecast-main {
   padding: 0px 0px 0px 30px;
-} */
+  font-size: 1.5rem;
+} 
 
 .forecast-icon {
   font-size: 25px;
   margin-left: 5px;
 }
-
-/* #main-icon {
-max-height: 150px;
-} */
