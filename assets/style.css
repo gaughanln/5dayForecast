@@ -125,8 +125,6 @@ form .form-input {
   border-radius: 5px;
   border: 1px solid transparent;
   outline: none;
-  /* background-color: #aeaeae; */
-  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
 }
 
 /* DASHBOARD STYLING */
@@ -170,7 +168,7 @@ body {
 
 #mainTemperature {
   font-size: 5.5em;
-  line-height: 0.7;
+  line-height: 0.1;
 }
 
 #tempDescription {
@@ -182,7 +180,10 @@ body {
   border: 1px solid #28688c;
   background-color: #2e7fa1;
   border-radius: 5px;
-  height: 5em;
+  height: 10em;
+  display: inline-flex;
+  margin: 14px auto;
+  padding: 0px 5px;
 }
 
 .day-weather-box p {
@@ -193,21 +194,15 @@ body {
   padding: 0px 10px;
 }
 
-.day-weather-inner-box {
-  display: inline-flex;
-  margin: 14px auto;
-  padding: 0px 5px;
-}
-
 .forecast-main {
   padding: 0px 0px 0px 30px;
-}
+} */
 
 .forecast-icon {
   font-size: 25px;
   margin-left: 5px;
 }
 
-#main-icon {
+/* #main-icon {
 max-height: 150px;
-}
+} */

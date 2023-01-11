@@ -1,5 +1,12 @@
-// WHEN I search for a city
-// THEN I am presented with current and future conditions for that city and that city is added to the search history
+// QUESTIONS
+
+// how to call the array of forecast dates - do i need a for loop for each element i am calling?
+
+// What is up with my formatting? am I not doing bootstrap right?
+
+// why is my main weather content so huge? Is that a formatting thing?
+
+
 
 // GLOBAL VARIABLES
 var searchBoxEl = document.getElementById("search-box");
@@ -24,31 +31,29 @@ containerEl.style.display = "none";
 searchBtnEl.addEventListener("click", function (event) {
   event.preventDefault();
   containerEl.style.display = "block";
-
-  if (formInputEl.value.trim() || formInputEl.value.trim() !== "") {
-    let city = formInputEl.value.trim();
-    // do the actual search
-    saveCitySearch(city);
-
-    // render history buttons
-    renderHistory();
-  }
   console.log(formInputEl.value);
 
+  searchCity(formInputEl.value);
+  // claring the search box
+  formInputEl.value = "";
+});
 
-  // WHEN I view current weather conditions for that city
-// THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, and the the wind speed
-
-  // fetching the API data for current weather
+ // fetching the API data for current weather of city searched
+function searchCity(city) {
   fetch(
     "https://api.openweathermap.org/data/2.5/weather?q=" +
-      formInputEl.value +
+      city +
       "&appid=a411ef0030322e0862cd44cde300dd84&units=imperial"
   )
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
 
+      // run the search
+      saveCitySearch(data.name);
+      // render history buttons
+      renderHistory();
+ 
       // CITY NAME
       document.querySelector("#cityName").textContent = data.name;
       console.log(data.name);
@@ -60,21 +65,24 @@ searchBtnEl.addEventListener("click", function (event) {
       // console.log(timeActual);
 
       // TEMPERATURE
-      document.querySelector("#mainTemperature").textContent = data.main.temp;
-      // need math.random() somewhere in here to round the number
-      console.log(data.main.temp);
+      document.querySelector("#mainTemperature").textContent =
+        Math.round(data.main.temp) + " °F";
+      console.log(Math.round(data.main.temp));
 
       // WEATHER CONDITIONS
-      document.querySelector("#tempDescription").textContent = data.weather[0].description;
+      document.querySelector("#tempDescription").textContent =
+        data.weather[0].description;
       console.log(data.weather[0].description);
 
-      //  HUMIDITY
-      document.querySelector("#humidity").textContent = data.main.humidity;
-      console.log(data.main.humidity);
+      // HUMIDITY
+      document.querySelector("#humidity").textContent = Math.round(
+        data.main.humidity
+      );
+      console.log(Math.round(data.main.humidity));
 
       // WIND
-      document.querySelector("#wind").textContent = data.wind.speed;
-      console.log(data.wind.speed);
+      document.querySelector("#wind").textContent = Math.round(data.wind.speed);
+      console.log(Math.round(data.wind.speed));
       // need math.random() somewhere in here
 
       // ICONS
@@ -84,40 +92,166 @@ searchBtnEl.addEventListener("click", function (event) {
         "https://openweathermap.org/img/wn/" + weatherIcon + ".png";
       document.querySelector("#main-icon").setAttribute("src", weatherIconUrl);
       console.log(weatherIconUrl);
-
-      // 5 DAY FORECAST
-      // do i need a for loop here?
-      // Date, ICON, temp, WIND SPEED + HUMIDITY
     });
 
-    //  fetching the API data for 5 day forecast
+
+  //  fetching the API data for 5 day forecast
   fetch(
     "https://api.openweathermap.org/data/2.5/forecast?q=" +
-      formInputEl.value +
+      city +
       "&appid=a411ef0030322e0862cd44cde300dd84&units=imperial"
   )
     .then((response) => response.json())
     .then((dataForecast) => {
       console.log(dataForecast);
 
-// 5 DAY FORECAST TEMP
-      document.querySelector("#forecast-day-1-temp").textContent = data.list[0].main.temp;
-      console.log(data.list[0].main.temp);
-    });
+      // 5 DAY FORECAST
+      // need a for loop
 
-  // claring the search box
-  formInputEl.value = "";
-});
+      // for (let index = 0; index < dataForecast.list[0].main.temp.length; index++) {
+      //   const temp = array[index];
+      // need a for loop
 
+  // DAY 1
+      document.querySelector("#forecast-day-1-temp").textContent = Math.round(
+        dataForecast.list[0].main.temp) +"°";
+      console.log(Math.round(dataForecast.list[0].main.temp));
 
-// WHEN I click on a city in the search history
-// THEN I am again presented with current and future conditions for that city. needs to be like a button that will bring back the search
+      //  HUMIDITY
+      document.querySelector("#humidity-day-1").textContent =
+        dataForecast.list[0].main.humidity;
+      console.log(dataForecast.list[0].main.humidity);
+
+      // WIND
+      document.querySelector("#wind-1").textContent = Math.round(
+        dataForecast.list[0].wind.speed
+      );
+      console.log(Math.round(dataForecast.list[0].wind.speed));
+
+      // ICONS
+      // can pull other icons from another source if you want
+      var weatherIcon5 = dataForecast.list[0].weather[0].icon;
+      var weatherIconUrl2 =
+        "https://openweathermap.org/img/wn/" + weatherIcon5 + ".png";
+      document
+        .querySelector("#forecast-day-1-icon")
+        .setAttribute("src", weatherIconUrl2);
+      console.log(weatherIconUrl2);
+
+//  DAY 2
+      document.querySelector("#forecast-day-2-temp").textContent = Math.round(
+        dataForecast.list[1].main.temp) + "°";
+      console.log(Math.round(dataForecast.list[1].main.temp));
+
+      //  HUMIDITY
+      document.querySelector("#humidity-day-2").textContent =
+        dataForecast.list[1].main.humidity;
+      console.log(dataForecast.list[0].main.humidity);
+
+      // WIND
+      document.querySelector("#wind-2").textContent = Math.round(
+        dataForecast.list[1].wind.speed
+      );
+      console.log(Math.round(dataForecast.list[1].wind.speed));
+
+      // ICONS
+      // can pull other icons from another source if you want
+      var weatherIcon5 = dataForecast.list[1].weather[0].icon;
+      var weatherIconUrl2 =
+        "https://openweathermap.org/img/wn/" + weatherIcon5 + ".png";
+      document
+        .querySelector("#forecast-day-2-icon")
+        .setAttribute("src", weatherIconUrl2);
+      console.log(weatherIconUrl2);
+
+//  DAY 3
+      document.querySelector("#forecast-day-3-temp").textContent = Math.round(
+        dataForecast.list[0].main.temp) + "°";
+      console.log(Math.round(dataForecast.list[2].main.temp));
+
+      //  HUMIDITY
+      document.querySelector("#humidity-day-3").textContent =
+        dataForecast.list[2].main.humidity;
+      console.log(dataForecast.list[2].main.humidity);
+
+      // WIND
+      document.querySelector("#wind-3").textContent = Math.round(
+        dataForecast.list[2].wind.speed
+      );
+      console.log(Math.round(dataForecast.list[2].wind.speed));
+
+      // ICONS
+      // can pull other icons from another source if you want
+      var weatherIcon5 = dataForecast.list[2].weather[0].icon;
+      var weatherIconUrl2 =
+        "https://openweathermap.org/img/wn/" + weatherIcon5 + ".png";
+      document
+        .querySelector("#forecast-day-3-icon")
+        .setAttribute("src", weatherIconUrl2);
+      console.log(weatherIconUrl2);
+  
+    //  DAY 4
+    document.querySelector("#forecast-day-4-temp").textContent = Math.round(
+      dataForecast.list[3].main.temp) + "°";
+    console.log(Math.round(dataForecast.list[3].main.temp));
+
+    // HUMIDITY
+    document.querySelector("#humidity-day-4").textContent =
+      dataForecast.list[3].main.humidity;
+    console.log(dataForecast.list[3].main.humidity);
+
+    // WIND
+    document.querySelector("#wind-4").textContent = Math.round(
+      dataForecast.list[3].wind.speed
+    );
+    console.log(Math.round(dataForecast.list[3].wind.speed));
+
+    // ICONS
+    // can pull other icons from another source if you want
+    var weatherIcon5 = dataForecast.list[3].weather[0].icon;
+    var weatherIconUrl2 =
+      "https://openweathermap.org/img/wn/" + weatherIcon5 + ".png";
+    document
+      .querySelector("#forecast-day-4-icon")
+      .setAttribute("src", weatherIconUrl2);
+    console.log(weatherIconUrl2);
+
+//  DAY 5
+    document.querySelector("#forecast-day-5-temp").textContent = Math.round(
+      dataForecast.list[4].main.temp) + "°";
+    console.log(Math.round(dataForecast.list[3].main.temp));
+
+    // HUMIDITY
+    document.querySelector("#humidity-day-5").textContent =
+      dataForecast.list[4].main.humidity;
+    console.log(dataForecast.list[3].main.humidity);
+
+    // WIND
+    document.querySelector("#wind-5").textContent = Math.round(
+      dataForecast.list[4].wind.speed
+    );
+    console.log(Math.round(dataForecast.list[4].wind.speed));
+
+    // ICONS
+    // can pull other icons from another source if you want
+    var weatherIcon5 = dataForecast.list[4].weather[0].icon;
+    var weatherIconUrl2 =
+      "https://openweathermap.org/img/wn/" + weatherIcon5 + ".png";
+    document
+      .querySelector("#forecast-day-5-icon")
+      .setAttribute("src", weatherIconUrl2);
+    console.log(weatherIconUrl2);
+  });
+}
+
 
 // setting up city searches as arrays to save in local storage
 function saveCitySearch(city) {
   let previousHistory = JSON.parse(localStorage.getItem("searchHistory")) || {};
-  previousHistory[city] = true;
-  localStorage.setItem("searchHistory", JSON.stringify(previousHistory));
+  if (!previousHistory[city]) {
+    previousHistory[city] = true;
+    localStorage.setItem("searchHistory", JSON.stringify(previousHistory));
+  }
 }
 
 // showing the search history on the page
@@ -129,17 +263,12 @@ function renderHistory() {
     let button = document.createElement("button");
     button.innerText = cityName;
 
-    // making the search history clickable - This isn't working
-
-    // WHEN I click on a city in the search history
-// THEN I am again presented with current and future conditions for that city. needs to be like a button that will bring back the search
-
+// sets up past searches as clickable to recall their weather
     button.addEventListener("click", function (event) {
       let cityName = event.target.innerText;
       console.log(cityName);
-      // serachCity(cityName);
+      searchCity(cityName);
     });
-    // HOW DO I STYLE THIS
     pastSearchEl.append(button);
   }
 }
@@ -160,12 +289,9 @@ function displayTime() {
 }
 displayTime();
 
-
-
-
-
-// WHEN I view future weather conditions for that city
-// THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
-
-// WHEN I click on a city in the search history
-// THEN I am again presented with current and future conditions for that city. needs to be like a button that will bring back the search
+// var time = data.dt;
+// var timeActual = (time * 1000);
+// var actualTime = dayjs(timeActual).format("h:mm A");
+// document.querySelector(".localTime").textContent =
+//   "time: " + actualTime;
+// console.log(actualTime);
