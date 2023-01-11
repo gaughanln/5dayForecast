@@ -111,144 +111,144 @@ function searchCity(city) {
       // need a for loop
       
 
-      for (let index = 0; index < 5; index++) {
-        var temp = dataForecast.list[index].main.temp;
-      // need a for loop
-      document.querySelector(".forecast-5day").textContent = Math.round(temp) +"°";
-      console.log(Math.round(temp));
-      }});
+      // for (let index = 0; index < 5; index++) {
+      //   var temp = dataForecast.list[index].main.temp;
+      // // need a for loop
+      // document.querySelector(".forecast-5day").textContent = Math.round(temp) +"°";
+      // console.log(Math.round(temp));
+      // }});
 
-      // hard coded day by day 
+  //     hard coded day by day 
   // DAY 1
-//       document.querySelector("#forecast-day-1-temp").textContent = Math.round(
-//         dataForecast.list[0].main.temp) +"°";
-//       console.log(Math.round(dataForecast.list[0].main.temp));
+      document.querySelector(".forecast-day-1-temp").textContent = Math.round(
+        dataForecast.list[0].main.temp) +"°";
+      console.log(Math.round(dataForecast.list[0].main.temp));
 
-//       //  HUMIDITY
-//       document.querySelector("#humidity-day-1").textContent =
-//         dataForecast.list[0].main.humidity;
-//       console.log(dataForecast.list[0].main.humidity);
+      //  HUMIDITY
+      document.querySelector("#humidity-day-1").textContent =
+        dataForecast.list[0].main.humidity;
+      console.log(dataForecast.list[0].main.humidity);
 
-//       // WIND
-//       document.querySelector("#wind-1").textContent = Math.round(
-//         dataForecast.list[0].wind.speed
-//       );
-//       console.log(Math.round(dataForecast.list[0].wind.speed));
+      // WIND
+      document.querySelector("#wind-1").textContent = Math.round(
+        dataForecast.list[0].wind.speed
+      );
+      console.log(Math.round(dataForecast.list[0].wind.speed));
 
-//       // ICONS
-//       // can pull other icons from another source if you want
-//       var weatherIcon5 = dataForecast.list[0].weather[0].icon;
-//       var weatherIconUrl2 =
-//         "https://openweathermap.org/img/wn/" + weatherIcon5 + ".png";
-//       document
-//         .querySelector("#forecast-day-1-icon")
-//         .setAttribute("src", weatherIconUrl2);
-//       console.log(weatherIconUrl2);
+      // ICONS
+      // can pull other icons from another source if you want
+      var weatherIcon5 = dataForecast.list[0].weather[0].icon;
+      var weatherIconUrl2 =
+        "https://openweathermap.org/img/wn/" + weatherIcon5 + ".png";
+      document
+        .querySelector("#forecast-day-1-icon")
+        .setAttribute("src", weatherIconUrl2);
+      console.log(weatherIconUrl2);
 
-// //  DAY 2
-//       document.querySelector("#forecast-day-2-temp").textContent = Math.round(
-//         dataForecast.list[1].main.temp) + "°";
-//       console.log(Math.round(dataForecast.list[1].main.temp));
+//  DAY 2
+      document.querySelector(".forecast-day-2-temp").textContent = Math.round(
+        dataForecast.list[1].main.temp) + "°";
+      console.log(Math.round(dataForecast.list[1].main.temp));
 
-//       //  HUMIDITY
-//       document.querySelector("#humidity-day-2").textContent =
-//         dataForecast.list[1].main.humidity;
-//       console.log(dataForecast.list[0].main.humidity);
+      //  HUMIDITY
+      document.querySelector("#humidity-day-2").textContent =
+        dataForecast.list[1].main.humidity;
+      console.log(dataForecast.list[0].main.humidity);
 
-//       // WIND
-//       document.querySelector("#wind-2").textContent = Math.round(
-//         dataForecast.list[1].wind.speed
-//       );
-//       console.log(Math.round(dataForecast.list[1].wind.speed));
+      // WIND
+      document.querySelector("#wind-2").textContent = Math.round(
+        dataForecast.list[1].wind.speed
+      );
+      console.log(Math.round(dataForecast.list[1].wind.speed));
 
-//       // ICONS
-//       // can pull other icons from another source if you want
-//       var weatherIcon5 = dataForecast.list[1].weather[0].icon;
-//       var weatherIconUrl2 =
-//         "https://openweathermap.org/img/wn/" + weatherIcon5 + ".png";
-//       document
-//         .querySelector("#forecast-day-2-icon")
-//         .setAttribute("src", weatherIconUrl2);
-//       console.log(weatherIconUrl2);
+      // ICONS
+      // can pull other icons from another source if you want
+      var weatherIcon5 = dataForecast.list[1].weather[0].icon;
+      var weatherIconUrl2 =
+        "https://openweathermap.org/img/wn/" + weatherIcon5 + ".png";
+      document
+        .querySelector("#forecast-day-2-icon")
+        .setAttribute("src", weatherIconUrl2);
+      console.log(weatherIconUrl2);
 
-// //  DAY 3
-//       document.querySelector("#forecast-day-3-temp").textContent = Math.round(
-//         dataForecast.list[0].main.temp) + "°";
-//       console.log(Math.round(dataForecast.list[2].main.temp));
+//  DAY 3
+      document.querySelector(".forecast-day-3-temp").textContent = Math.round(
+        dataForecast.list[0].main.temp) + "°";
+      console.log(Math.round(dataForecast.list[2].main.temp));
 
-//       //  HUMIDITY
-//       document.querySelector("#humidity-day-3").textContent =
-//         dataForecast.list[2].main.humidity;
-//       console.log(dataForecast.list[2].main.humidity);
+      //  HUMIDITY
+      document.querySelector("#humidity-day-3").textContent =
+        dataForecast.list[2].main.humidity;
+      console.log(dataForecast.list[2].main.humidity);
 
-//       // WIND
-//       document.querySelector("#wind-3").textContent = Math.round(
-//         dataForecast.list[2].wind.speed
-//       );
-//       console.log(Math.round(dataForecast.list[2].wind.speed));
+      // WIND
+      document.querySelector("#wind-3").textContent = Math.round(
+        dataForecast.list[2].wind.speed
+      );
+      console.log(Math.round(dataForecast.list[2].wind.speed));
 
-//       // ICONS
-//       // can pull other icons from another source if you want
-//       var weatherIcon5 = dataForecast.list[2].weather[0].icon;
-//       var weatherIconUrl2 =
-//         "https://openweathermap.org/img/wn/" + weatherIcon5 + ".png";
-//       document
-//         .querySelector("#forecast-day-3-icon")
-//         .setAttribute("src", weatherIconUrl2);
-//       console.log(weatherIconUrl2);
+      // ICONS
+      // can pull other icons from another source if you want
+      var weatherIcon5 = dataForecast.list[2].weather[0].icon;
+      var weatherIconUrl2 =
+        "https://openweathermap.org/img/wn/" + weatherIcon5 + ".png";
+      document
+        .querySelector("#forecast-day-3-icon")
+        .setAttribute("src", weatherIconUrl2);
+      console.log(weatherIconUrl2);
   
-//     //  DAY 4
-//     document.querySelector("#forecast-day-4-temp").textContent = Math.round(
-//       dataForecast.list[3].main.temp) + "°";
-//     console.log(Math.round(dataForecast.list[3].main.temp));
+    //  DAY 4
+    document.querySelector(".forecast-day-4-temp").textContent = Math.round(
+      dataForecast.list[3].main.temp) + "°";
+    console.log(Math.round(dataForecast.list[3].main.temp));
 
-//     // HUMIDITY
-//     document.querySelector("#humidity-day-4").textContent =
-//       dataForecast.list[3].main.humidity;
-//     console.log(dataForecast.list[3].main.humidity);
+    // HUMIDITY
+    document.querySelector("#humidity-day-4").textContent =
+      dataForecast.list[3].main.humidity;
+    console.log(dataForecast.list[3].main.humidity);
 
-//     // WIND
-//     document.querySelector("#wind-4").textContent = Math.round(
-//       dataForecast.list[3].wind.speed
-//     );
-//     console.log(Math.round(dataForecast.list[3].wind.speed));
+    // WIND
+    document.querySelector("#wind-4").textContent = Math.round(
+      dataForecast.list[3].wind.speed
+    );
+    console.log(Math.round(dataForecast.list[3].wind.speed));
 
-//     // ICONS
-//     // can pull other icons from another source if you want
-//     var weatherIcon5 = dataForecast.list[3].weather[0].icon;
-//     var weatherIconUrl2 =
-//       "https://openweathermap.org/img/wn/" + weatherIcon5 + ".png";
-//     document
-//       .querySelector("#forecast-day-4-icon")
-//       .setAttribute("src", weatherIconUrl2);
-//     console.log(weatherIconUrl2);
+    // ICONS
+    // can pull other icons from another source if you want
+    var weatherIcon5 = dataForecast.list[3].weather[0].icon;
+    var weatherIconUrl2 =
+      "https://openweathermap.org/img/wn/" + weatherIcon5 + ".png";
+    document
+      .querySelector("#forecast-day-4-icon")
+      .setAttribute("src", weatherIconUrl2);
+    console.log(weatherIconUrl2);
 
-// //  DAY 5
-//     document.querySelector("#forecast-day-5-temp").textContent = Math.round(
-//       dataForecast.list[4].main.temp) + "°";
-//     console.log(Math.round(dataForecast.list[3].main.temp));
+//  DAY 5
+    document.querySelector(".forecast-day-5-temp").textContent = Math.round(
+      dataForecast.list[4].main.temp) + "°";
+    console.log(Math.round(dataForecast.list[3].main.temp));
 
-//     // HUMIDITY
-//     document.querySelector("#humidity-day-5").textContent =
-//       dataForecast.list[4].main.humidity;
-//     console.log(dataForecast.list[3].main.humidity);
+    // HUMIDITY
+    document.querySelector("#humidity-day-5").textContent =
+      dataForecast.list[4].main.humidity;
+    console.log(dataForecast.list[3].main.humidity);
 
-//     // WIND
-//     document.querySelector("#wind-5").textContent = Math.round(
-//       dataForecast.list[4].wind.speed
-//     );
-//     console.log(Math.round(dataForecast.list[4].wind.speed));
+    // WIND
+    document.querySelector("#wind-5").textContent = Math.round(
+      dataForecast.list[4].wind.speed
+    );
+    console.log(Math.round(dataForecast.list[4].wind.speed));
 
-//     // ICONS
-//     // can pull other icons from another source if you want
-//     var weatherIcon5 = dataForecast.list[4].weather[0].icon;
-//     var weatherIconUrl2 =
-//       "https://openweathermap.org/img/wn/" + weatherIcon5 + ".png";
-//     document
-//       .querySelector("#forecast-day-5-icon")
-//       .setAttribute("src", weatherIconUrl2);
-//     console.log(weatherIconUrl2);
-//   });
+    // ICONS
+    // can pull other icons from another source if you want
+    var weatherIcon5 = dataForecast.list[4].weather[0].icon;
+    var weatherIconUrl2 =
+      "https://openweathermap.org/img/wn/" + weatherIcon5 + ".png";
+    document
+      .querySelector("#forecast-day-5-icon")
+      .setAttribute("src", weatherIconUrl2);
+    console.log(weatherIconUrl2);
+  });
 }
 
 
