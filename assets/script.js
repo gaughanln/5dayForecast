@@ -27,11 +27,13 @@ var localTimeEl = $("#localTime");
 // hides the weather box until the search button is clicked
 containerEl.style.display = "none";
 
-// makes the search button appear once it is clicked
+// makes the weather box appear once it is clicked
 searchBtnEl.addEventListener("click", function (event) {
   event.preventDefault();
   containerEl.style.display = "block";
   console.log(formInputEl.value);
+
+// need a try / catch here?
 
   searchCity(formInputEl.value);
   // claring the search box
@@ -109,13 +111,14 @@ function searchCity(city) {
       // need a for loop
       
 
-      for (let index = 0; index < dataForecast.list.length; index++) {
+      for (let index = 0; index < 5; index++) {
         var temp = dataForecast.list[index].main.temp;
       // need a for loop
-      document.querySelector("#forecast-5day").textContent = Math.round(temp) +"°";
+      document.querySelector(".forecast-5day").textContent = Math.round(temp) +"°";
       console.log(Math.round(temp));
       }});
 
+      // hard coded day by day 
   // DAY 1
 //       document.querySelector("#forecast-day-1-temp").textContent = Math.round(
 //         dataForecast.list[0].main.temp) +"°";
