@@ -6,6 +6,7 @@ var searchBtnEl = document.querySelector(".btn");
 var pastSearchEl = document.getElementById("past-search");
 var containerEl = document.querySelector(".container");
 var cityNameEl = document.querySelector("#cityName");
+var displayDateEl = document.querySelector(".day-of-week")
 
 var iconEl = document.getElementById("main-icon");
 var mainTempEl = document.getElementById("mainTemperature");
@@ -123,7 +124,20 @@ function searchCity(city) {
       //     forecastTemp) +"°";
       //   console.log(Math.round(forecastTemp));
 
+      // THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
+      // missing the actual date - how?
+    
 
+  //  attempting to pull the days of the week however it's only pulling the current day 
+//         var day = dataForecast.list[0].dt;
+//         console.log(day); 
+//         var day = dayjs().format("ddd");
+
+// for (let index = 0; index < dataForecast.list.slice(0, 5).length; index++) {
+// }
+        document.querySelector(".day-of-week").textContent = day;
+    
+        
       //     hard coded day by day since i couldn't establilsh the for loop
       // DAY 1
       document.querySelector(".forecast-day-1-temp").textContent =
@@ -302,6 +316,6 @@ displayDate();
 function displayTime() {
   var todaysTime = dayjs().format("h:mm A");
   localTimeEl.text(todaysTime);
-}
-displayTime();
+} displayTime();
+
 
