@@ -108,17 +108,32 @@ function searchCity(city) {
       console.log(dataForecast);
 
       // 5 DAY FORECAST
-      // need a for loop
-      
+      // need a for loop but can't figure it out because it's so nested inside the data. Here's the attempted logic
+          
+      //  let forecastTemp =[];
+      //   for (
+      //     let index = 0;
+      //     index < dataForecast.list.length; index++) {
+      //     console.log(dataForecast.list[index].weather[0]);
+        
+    //  forecastDesc.push(dataForecast.list[index].weather.description); //description
+    //  forecastIcon.push(dataForecast.list[index].weather.icon); //icon
+      //  forecastTemp(dataForecast.list[index].weather.main); // temp
+      //   }
 
-      // for (let index = 0; index < 5; index++) {
-      //   var temp = dataForecast.list[index].main.temp;
-      // // need a for loop
-      // document.querySelector(".forecast-5day").textContent = Math.round(temp) +"°";
-      // console.log(Math.round(temp));
-      // }});
+      // var ul = document.querySelector(".forecast-temp");
+      // stationName.forEach((forecastTemp) => {
+      //   var li = document.createElement("li");
+      //   li.innerText = forecastTemp; //
+      //   ul.appendChild(li);
+      // });
 
-  //     hard coded day by day 
+      //   document.querySelector(".forecast-temp").textContent = Math.round(
+      //     forecastTemp) +"°";
+      //   console.log(Math.round(forecastTemp));
+    
+
+  //     hard coded day by day since i couldn't establilsh the for loop
   // DAY 1
       document.querySelector(".forecast-day-1-temp").textContent = Math.round(
         dataForecast.list[0].main.temp) +"°";
