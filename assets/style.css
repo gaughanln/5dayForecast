@@ -30,29 +30,15 @@ body {
 }
 
 /* TEXT COLORS */
-
+.text-white {
+  color: #f4f6f7;
+}
 .text-dark {
   color: #53565a;
 }
 .text-center {
   text-align: center;
 }
-
-/* HEADERS */
-.temp-main{
-  font-size: 1rem;
-}
-
-.time-main{
-  font-size: 1rem;
-  justify-content: left;
-}
-
-.details-main{
-  font-size: 1rem;
-  text-align: right;
-}
-
 
 
 h1 {
@@ -129,25 +115,7 @@ form .form-input {
 }
 
 /* DASHBOARD STYLING */
-a {
-  color: white;
-  opacity: 0.6;
-  text-decoration: none;
-}
 
-a:hover,
-a:active,
-a:focus {
-  color: white;
-  text-decoration: none;
-  opacity: 1;
-}
-
-.active {
-  color: white;
-  text-decoration: none;
-  opacity: 1;
-}
 
 body {
   background-color: #f4f6f7;
@@ -164,7 +132,6 @@ body {
 }
 
 .current-weather {
-  display: flex;
   padding: 15px;
 }
 
@@ -180,27 +147,17 @@ body {
   margin-top: 0.5%;
   margin-bottom: 0.5%;
 }
-.col-4{
-  width: 30%;
-  padding:2%;
-  margin:2%;
-}
+/*  */
 .day-weather-box {
   display: inline-flex;
   border: 1px solid #28688c;
   background-color: #2e7fa1;
-  border-radius: 5px;
-  height: 15em;
-  margin: 14px auto;
-  padding: 0px 5px;
-  width: 16%;
+  height: 15rem;
+  justify-content: center;
+ 
 }
 
-
-
-
 .forecast-main {
-  padding: 0px 0px 0px 30px;
   font-size: 1.5rem;
 } 
 

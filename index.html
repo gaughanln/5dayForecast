@@ -5,14 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		<!-- BOOTSTRAP LINK -->
-		<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"> -->
+    <!-- BOOTSTRAP LINK -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"> -->
 
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
 
     <!-- CSS LINK -->
     <link rel="stylesheet" href="assets/style.css" />
 
-<!-- TITLE -->
+    <!-- TITLE -->
     <title>5 Day Weather Forecast</title>
   </head>
 
@@ -22,9 +28,8 @@
       <h1>5 Day Weather Forecast</h1>
     </header>
 
-
     <!-- SEARCH BOX -->
-    <div id="search-box" class="col-2 text-center">
+    <div id="search-box" class="col text-center">
       <h2>Search for a city:</h2>
       <form class="city-search">
         <input type="text" class="form-input" placeholder="Enter city here" />
@@ -33,129 +38,119 @@
 
       <div id="past-search" class="past-search"></div>
     </div>
-    
-  		<!-- ALL WEATHER CONTAINER -->
-    		<div class="container" id="wrapper">
 
-					<!-- MAIN WEATHER CONTAINER -->
-      		<div class="row current-weather">
-        	
+    <!-- ALL WEATHER CONTAINER -->
+    <div class="container" id="wrapper">
+      <!-- MAIN WEATHER CONTAINER -->
+      <div class="container" id="top">
+        <div class="row current-weather baseline-top">
+          <!-- CITY, DATE, TIME -->
+          <div class="col-3">
+            <p id="cityName"></p>
+            <p id="localDate"></p>
+            <p id="localTime"></p>
+          </div>
 
-						<!-- CITY, DATE, TIME -->
-						<div class="time-main">
-							<div class="col-3"> 
-								<p id="cityName"></p>
-								<p id="localDate"></p>
-								<p id="localTime"></p>
-							</div>
-						</div>
+          <!-- TEMP, CONDITIONS, SYMBOL -->
+          <div class="col-6 text-center">
+            <img id="main-icon" />
+            <p id="mainTemperature"></p>
+            <p id="tempDescription"></p>
+          </div>
 
-						<!-- TEMP, CONDITIONS, SYMBOL -->
-							<div class="temp-main">
-								<div class="col-6"> 
-									<img id="main-icon">
-										<p id="mainTemperature"></p>
-										<p id="tempDescription"></p>
-								</div>
-							</div>
+          <!-- HUMIDITY + WIND -->
+          <div class="col-3">
+            <p class="text-right">Humidity: <span id="humidity"></span> %</p>
+            <p class="text-right">Wind: <span id="wind"></span> mph</p>
+          </div>
+        </div>
+      </div>
 
-						<!-- HUMIDITY + WIND -->
-						<div class="details-main">
-							<div class="col-3"> 
-								<p>Humidity: <span id="humidity"></span> %</p>
-								<p>Wind: <span id="wind"></span> mph</p>
-							</div>
-						</div>
-   					
-					</div>
+      <h2 class="days-ahead">5 days ahead</h2>
+      <!-- 5 DAY FORECAST -->
+      <div class="container">
+        <div class="row">
+          <!-- DAY 1 -->
+          <div class="col day-weather-box">
+            <div class="day-weather-inner-box">
+              <div class="forecast-main">
+                <p id="forecast-day-1-name"></p>
+                <p class="forecast-day-1-temp">°</p>
+                <img class="forecast-icon" id="forecast-day-1-icon" />
+              </div>
+              <div>
+                <p>Humidity: <span id="humidity-day-1"></span>%</p>
+                <p>Wind: <span id="wind-1"></span> mph</p>
+              </div>
+            </div>
+          </div>
 
+          <!-- DAY 2 -->
+          <div class="col day-weather-box">
+            <div class="day-weather-inner-box">
+              <div class="forecast-main">
+                <p id="forecast-day-2-name"></p>
+                <p class="forecast-day-2-temp">°</p>
+                <img class="forecast-icon" id="forecast-day-2-icon" />
+              </div>
+              <div>
+                <p>Humidity: <span id="humidity-day-2"></span>%</p>
+                <p>Wind: <span id="wind-2"></span> mph</p>
+              </div>
+            </div>
+          </div>
 
-				<!-- 5 DAY FORECAST -->
-					<div class="container">
-						<div class="row">
-						
-							<h2 class="days-ahead"> 5 days ahead </span></h2>
-					<!-- DAY 1 -->
-						<div class="col day-weather-box">
-							<div class="day-weather-inner-box">
-				 				<div class="forecast-main">
-									<p id="forecast-day-1-name"></p>
-											<p class="forecast-day-1-temp">°</p>
-												<img class="forecast-icon" id="forecast-day-1-icon">
-								</div>
-								<div>
-									<p>Humidity: <span id="humidity-day-1"></span> %</p>
-									<p>Wind: <span id="wind-1"></span> mph</p>
-								</div>
-							</div>
-						</div>
+          <!-- DAY 3 -->
+          <div class="col day-weather-box">
+            <div class="day-weather-inner-box">
+              <div class="forecast-main">
+                <p id="forecast-day-3-name"></p>
+                <p class="forecast-day-3-temp">°</p>
+                <img class="forecast-icon" id="forecast-day-3-icon" />
+              </div>
+              <div>
+                <p>Humidity: <span id="humidity-day-3"></span>%</p>
+                <p>Wind: <span id="wind-3"></span> mph</p>
+              </div>
+            </div>
+          </div>
 
-					<!-- DAY 2 -->
-						<div class="col day-weather-box">
-							<div class="day-weather-inner-box">
-								<div class="forecast-main">
-									<p id="forecast-day-2-name"></p>
-										<p class="forecast-day-2-temp">°</p>
-											<img class="forecast-icon" id="forecast-day-2-icon">
-								</div>
-								<div>
-									<p>Humidity: <span id="humidity-day-2"></span> %</p>
-									<p>Wind: <span id="wind-2"></span> mph</p>
-								</div>
-							</div>
-						</div>
+          <!-- DAY 4 -->
+          <div class="col day-weather-box">
+            <div class="day-weather-inner-box">
+              <div class="forecast-main">
+                <p id="forecast-day-4-name"></p>
+                <p class="forecast-day-4-temp">°</p>
+                <img class="forecast-icon" id="forecast-day-4-icon" />
+              </div>
+              <div>
+                <p>Humidity: <span id="humidity-day-4"></span>%</p>
+                <p>Wind: <span id="wind-4"></span> mph</p>
+              </div>
+            </div>
+          </div>
 
-					<!-- DAY 3 -->
-					<div class="col day-weather-box">
-						<div class="day-weather-inner-box">
-							<div class="forecast-main">
-								<p id="forecast-day-3-name"></p>
-										<p class="forecast-day-3-temp">°</p>
-											<img class="forecast-icon" id="forecast-day-3-icon">
-							</div>
-							<div>
-								<p>Humidity: <span id="humidity-day-3"></span> %</p>
-								<p>Wind: <span id="wind-3"></span> mph</p>
-							</div>
-						</div>
-					</div> 
-
-					<!-- DAY 4 -->
-					<div class="col day-weather-box">
-						<div class="day-weather-inner-box">
-							<div class="forecast-main">
-								<p id="forecast-day-4-name"></p>
-										<p class="forecast-day-4-temp">°</p>
-											<img class="forecast-icon" id="forecast-day-4-icon">
-							</div>
-							<div>
-								<p>Humidity: <span id="humidity-day-4"></span> %</p>
-								<p>Wind: <span id="wind-4"></span> mph</p>
-							</div>
-						</div>
-					</div> 
-					
-					<!-- DAY 5 -->
-					<div class="col day-weather-box">
-						<div class="day-weather-inner-box">
-							<div class="forecast-main">
-								<p id="forecast-day-5-name"></p>
-										<p class="forecast-day-5-temp">°</p>
-											<img class="forecast-icon" id="forecast-day-5-icon">
-							</div>
-							<div>
-								<p>Humidity: <span id="humidity-day-5"></span> %</p>
-								<p>Wind: <span id="wind-5"></span> mph</p>
-							</div>
-						</div>
-					</div>
-						</div>
-				</div>
-
+          <!-- DAY 5 -->
+          <div class="col day-weather-box">
+            <div class="day-weather-inner-box">
+              <div class="forecast-main">
+                <p id="forecast-day-5-name"></p>
+                <p class="forecast-day-5-temp">°</p>
+                <img class="forecast-icon" id="forecast-day-5-icon" />
+              </div>
+              <div>
+                <p>Humidity: <span id="humidity-day-5"></span>%</p>
+                <p>Wind: <span id="wind-5"></span> mph</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- API -->
     <!-- TIMEZONE DAYJS - DO WE NEED THIS?-->
-	<!-- <script>
+    <!-- <script>
 			dayjs.extend(window.dayjs_plugin_utc)
 			dayjs.extend(window.dayjs_plugin_timezone);
 	</script> -->
@@ -165,20 +160,15 @@
 
     <!-- DAYJS -->
     <script
-    src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
-    integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
-    crossorigin="anonymous"
-  ></script>
+      src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+      integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
+      crossorigin="anonymous"
+    ></script>
 
     <!-- JAVASCRIPT LINK -->
     <script src="assets/script.js"></script>
 
-				<!-- BOOTSTRAP SCRIPT-->
-				<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <!-- BOOTSTRAP SCRIPT-->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> -->
   </body>
 </html>
-
-
-
-
-  	

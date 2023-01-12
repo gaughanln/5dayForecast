@@ -1,13 +1,3 @@
-// QUESTIONS
-
-// how to call the array of forecast dates - do i need a for loop for each element i am calling?
-
-// What is up with my formatting? am I not doing bootstrap right?
-
-// why is my main weather content so huge? Is that a formatting thing?
-
-
-
 // GLOBAL VARIABLES
 var searchBoxEl = document.getElementById("search-box");
 var citySearchEl = document.getElementsByClassName("city-search");
@@ -27,20 +17,22 @@ var localTimeEl = $("#localTime");
 // hides the weather box until the search button is clicked
 containerEl.style.display = "none";
 
+
 // makes the weather box appear once it is clicked
 searchBtnEl.addEventListener("click", function (event) {
   event.preventDefault();
   containerEl.style.display = "block";
   console.log(formInputEl.value);
 
-// need a try / catch here?
+  // need a try / catch here?
 
   searchCity(formInputEl.value);
   // claring the search box
   formInputEl.value = "";
 });
 
- // fetching the API data for current weather of city searched
+
+// WEATHER API CALL
 function searchCity(city) {
   fetch(
     "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -55,12 +47,13 @@ function searchCity(city) {
       saveCitySearch(data.name);
       // render history buttons
       renderHistory();
- 
+
+      //  CURRENT WEATHER
       // CITY NAME
       document.querySelector("#cityName").textContent = data.name;
       console.log(data.name);
 
-      // TIMEZONE
+      // TIMEZONE - need to pull local info to correlating city called
       // var time = data.timezone;
       // var timeActual = dayjs(time).format("h:mm A");
       // document.querySelector("#localTime").textContent = timeActual;
@@ -85,10 +78,9 @@ function searchCity(city) {
       // WIND
       document.querySelector("#wind").textContent = Math.round(data.wind.speed);
       console.log(Math.round(data.wind.speed));
-      // need math.random() somewhere in here
 
       // ICONS
-      // can pull other icons from another source if you want
+      // can pull other icons from another source if you want - but how?
       var weatherIcon = data.weather[0].icon;
       var weatherIconUrl =
         "https://openweathermap.org/img/wn/" + weatherIcon + ".png";
@@ -96,8 +88,7 @@ function searchCity(city) {
       console.log(weatherIconUrl);
     });
 
-
-  //  fetching the API data for 5 day forecast
+  //  5 DAY FORECAST FETCH
   fetch(
     "https://api.openweathermap.org/data/2.5/forecast?q=" +
       city +
@@ -109,15 +100,15 @@ function searchCity(city) {
 
       // 5 DAY FORECAST
       // need a for loop but can't figure it out because it's so nested inside the data. Here's the attempted logic
-          
+
       //  let forecastTemp =[];
       //   for (
       //     let index = 0;
       //     index < dataForecast.list.length; index++) {
       //     console.log(dataForecast.list[index].weather[0]);
-        
-    //  forecastDesc.push(dataForecast.list[index].weather.description); //description
-    //  forecastIcon.push(dataForecast.list[index].weather.icon); //icon
+
+      //  forecastDesc.push(dataForecast.list[index].weather.description); //description
+      //  forecastIcon.push(dataForecast.list[index].weather.icon); //icon
       //  forecastTemp(dataForecast.list[index].weather.main); // temp
       //   }
 
@@ -131,12 +122,12 @@ function searchCity(city) {
       //   document.querySelector(".forecast-temp").textContent = Math.round(
       //     forecastTemp) +"°";
       //   console.log(Math.round(forecastTemp));
-    
 
-  //     hard coded day by day since i couldn't establilsh the for loop
-  // DAY 1
-      document.querySelector(".forecast-day-1-temp").textContent = Math.round(
-        dataForecast.list[0].main.temp) +"°";
+
+      //     hard coded day by day since i couldn't establilsh the for loop
+      // DAY 1
+      document.querySelector(".forecast-day-1-temp").textContent =
+        Math.round(dataForecast.list[0].main.temp) + "°";
       console.log(Math.round(dataForecast.list[0].main.temp));
 
       //  HUMIDITY
@@ -160,9 +151,9 @@ function searchCity(city) {
         .setAttribute("src", weatherIconUrl2);
       console.log(weatherIconUrl2);
 
-//  DAY 2
-      document.querySelector(".forecast-day-2-temp").textContent = Math.round(
-        dataForecast.list[1].main.temp) + "°";
+      //  DAY 2
+      document.querySelector(".forecast-day-2-temp").textContent =
+        Math.round(dataForecast.list[1].main.temp) + "°";
       console.log(Math.round(dataForecast.list[1].main.temp));
 
       //  HUMIDITY
@@ -186,9 +177,9 @@ function searchCity(city) {
         .setAttribute("src", weatherIconUrl2);
       console.log(weatherIconUrl2);
 
-//  DAY 3
-      document.querySelector(".forecast-day-3-temp").textContent = Math.round(
-        dataForecast.list[0].main.temp) + "°";
+      //  DAY 3
+      document.querySelector(".forecast-day-3-temp").textContent =
+        Math.round(dataForecast.list[0].main.temp) + "°";
       console.log(Math.round(dataForecast.list[2].main.temp));
 
       //  HUMIDITY
@@ -211,59 +202,59 @@ function searchCity(city) {
         .querySelector("#forecast-day-3-icon")
         .setAttribute("src", weatherIconUrl2);
       console.log(weatherIconUrl2);
-  
-    //  DAY 4
-    document.querySelector(".forecast-day-4-temp").textContent = Math.round(
-      dataForecast.list[3].main.temp) + "°";
-    console.log(Math.round(dataForecast.list[3].main.temp));
 
-    // HUMIDITY
-    document.querySelector("#humidity-day-4").textContent =
-      dataForecast.list[3].main.humidity;
-    console.log(dataForecast.list[3].main.humidity);
+      //  DAY 4
+      document.querySelector(".forecast-day-4-temp").textContent =
+        Math.round(dataForecast.list[3].main.temp) + "°";
+      console.log(Math.round(dataForecast.list[3].main.temp));
 
-    // WIND
-    document.querySelector("#wind-4").textContent = Math.round(
-      dataForecast.list[3].wind.speed
-    );
-    console.log(Math.round(dataForecast.list[3].wind.speed));
+      // HUMIDITY
+      document.querySelector("#humidity-day-4").textContent =
+        dataForecast.list[3].main.humidity;
+      console.log(dataForecast.list[3].main.humidity);
 
-    // ICONS
-    // can pull other icons from another source if you want
-    var weatherIcon5 = dataForecast.list[3].weather[0].icon;
-    var weatherIconUrl2 =
-      "https://openweathermap.org/img/wn/" + weatherIcon5 + ".png";
-    document
-      .querySelector("#forecast-day-4-icon")
-      .setAttribute("src", weatherIconUrl2);
-    console.log(weatherIconUrl2);
+      // WIND
+      document.querySelector("#wind-4").textContent = Math.round(
+        dataForecast.list[3].wind.speed
+      );
+      console.log(Math.round(dataForecast.list[3].wind.speed));
 
-//  DAY 5
-    document.querySelector(".forecast-day-5-temp").textContent = Math.round(
-      dataForecast.list[4].main.temp) + "°";
-    console.log(Math.round(dataForecast.list[3].main.temp));
+      // ICONS
+      // can pull other icons from another source if you want
+      var weatherIcon5 = dataForecast.list[3].weather[0].icon;
+      var weatherIconUrl2 =
+        "https://openweathermap.org/img/wn/" + weatherIcon5 + ".png";
+      document
+        .querySelector("#forecast-day-4-icon")
+        .setAttribute("src", weatherIconUrl2);
+      console.log(weatherIconUrl2);
 
-    // HUMIDITY
-    document.querySelector("#humidity-day-5").textContent =
-      dataForecast.list[4].main.humidity;
-    console.log(dataForecast.list[3].main.humidity);
+      //  DAY 5
+      document.querySelector(".forecast-day-5-temp").textContent =
+        Math.round(dataForecast.list[4].main.temp) + "°";
+      console.log(Math.round(dataForecast.list[3].main.temp));
 
-    // WIND
-    document.querySelector("#wind-5").textContent = Math.round(
-      dataForecast.list[4].wind.speed
-    );
-    console.log(Math.round(dataForecast.list[4].wind.speed));
+      // HUMIDITY
+      document.querySelector("#humidity-day-5").textContent =
+        dataForecast.list[4].main.humidity;
+      console.log(dataForecast.list[3].main.humidity);
 
-    // ICONS
-    // can pull other icons from another source if you want
-    var weatherIcon5 = dataForecast.list[4].weather[0].icon;
-    var weatherIconUrl2 =
-      "https://openweathermap.org/img/wn/" + weatherIcon5 + ".png";
-    document
-      .querySelector("#forecast-day-5-icon")
-      .setAttribute("src", weatherIconUrl2);
-    console.log(weatherIconUrl2);
-  });
+      // WIND
+      document.querySelector("#wind-5").textContent = Math.round(
+        dataForecast.list[4].wind.speed
+      );
+      console.log(Math.round(dataForecast.list[4].wind.speed));
+
+      // ICONS
+      // can pull other icons from another source if you want
+      var weatherIcon5 = dataForecast.list[4].weather[0].icon;
+      var weatherIconUrl2 =
+        "https://openweathermap.org/img/wn/" + weatherIcon5 + ".png";
+      document
+        .querySelector("#forecast-day-5-icon")
+        .setAttribute("src", weatherIconUrl2);
+      console.log(weatherIconUrl2);
+    });
 }
 
 
@@ -276,6 +267,7 @@ function saveCitySearch(city) {
   }
 }
 
+
 // showing the search history on the page
 function renderHistory() {
   let previousHistory = JSON.parse(localStorage.getItem("searchHistory")) || {};
@@ -285,7 +277,7 @@ function renderHistory() {
     let button = document.createElement("button");
     button.innerText = cityName;
 
-// sets up past searches as clickable to recall their weather
+    // sets up past searches as clickable to recall their weather
     button.addEventListener("click", function (event) {
       let cityName = event.target.innerText;
       console.log(cityName);
@@ -295,14 +287,16 @@ function renderHistory() {
   }
 }
 
+
 // can maybe do Date + time within the API
 
 // display date function * need to make sure it's set to date of the city called
 function displayDate() {
-  var todaysDate = dayjs().format("dddd, MMM DD, YYYY");
+  var todaysDate = dayjs().format("dddd, MMM DD");
   localDateEl.text(todaysDate);
 }
 displayDate();
+
 
 // display time function * need to make sure it's set to local time of the city called
 function displayTime() {
@@ -311,9 +305,3 @@ function displayTime() {
 }
 displayTime();
 
-// var time = data.dt;
-// var timeActual = (time * 1000);
-// var actualTime = dayjs(timeActual).format("h:mm A");
-// document.querySelector(".localTime").textContent =
-//   "time: " + actualTime;
-// console.log(actualTime);
