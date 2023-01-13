@@ -131,11 +131,16 @@ function searchCity(city) {
   //  attempting to pull the days of the week however it's only pulling the current day 
 //         var day = dataForecast.list[0].dt;
 //         console.log(day); 
-//         var day = dayjs().format("ddd");
 
-// for (let index = 0; index < dataForecast.list.slice(0, 5).length; index++) {
-// }
-        document.querySelector(".day-of-week").textContent = day;
+// for (let index = 1; index < 6; index++) {
+//   console.log(dataForecast.list[index].dt)
+// let forecast = new Date(dataForecast.list[index].dt * 1000)
+// var dayFormat = dayjs(forecast).format("ddd");
+// var date = document.createElement("p");
+// date.innerHTML = "<p>" + dayFormat + "</p>"
+// document.querySelector(".day-weather-inner-box").appendChild(date)
+// } 
+      //  it's pushed by 8 hour incriments - need to account for that 
     
         
       //     hard coded day by day since i couldn't establilsh the for loop
